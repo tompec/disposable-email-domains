@@ -1,10 +1,11 @@
-# disposable-email-domains
+# Disposable Email Domains
+
 
 A list of [disposable email domains](http://en.wikipedia.org/wiki/Disposable_email_address) like `mailinator.com`. You can use it to detect or block disposable accounts in your signup process. Exact domain matches are found in [index.json](https://github.com/tompec/disposable-email-domains/blob/master/index.json) and wildcard domains (ex: `*.33mail.com`) are in [wildcard.json](https://github.com/tompec/disposable-email-domains/blob/master/wildcard.json).
 
-# Examples
+## Examples
 
-## Node.JS
+### Node.JS
 ```js
 var domains = require('disposable-email-domains');
 var wildcards = require('disposable-email-domains/wildcard.json');
@@ -12,24 +13,33 @@ var wildcards = require('disposable-email-domains/wildcard.json');
 // ... your code here
 ```
 
-# Installation
+## Installation
   
 ```
-$ npm install disposable-email-domains
+$ npm install disposable-domains
 ```
 
-# Contributing
+## Contributing
 
-Add new disposable domains to [index.json](https://github.com/tompec/disposable-email-domains/blob/master/index.json) and wildcard disposable domains to [wildcard.json](https://github.com/tompec/disposable-email-domains/blob/master/wildcard.json).  
+1. Install dependencies:
+   ```
+   npm install
+   ```
 
-To easily add new domains, insert them into [index.txt](https://github.com/tompec/disposable-email-domains/blob/master/contributions/index.txt) and/or [wildcard.txt](https://github.com/tompec/disposable-email-domains/blob/master/contributions/wildcard.txt) and run `npm run add`.  
-The domains will be added to the respective files and some validation will be made to ensure they pass the tests.
+2. Add your disposable domains to [contributions/index.txt](https://github.com/tompec/disposable-email-domains/blob/master/contributions/index.txt) (one domain per line, without any additional formatting)
 
-Please run `npm run test` before creating a Pull Request to ensure all tests are passing.
+3. Run the [integration script](https://github.com/tompec/disposable-email-domains/blob/master/domain-manager.js):
+   ```
+   npm run process
+   ```
+   That script will:
+   - Add your domains to index.json
+   - Validate domains using the FQDN (Fully Qualified Domain Name) standard
+   - Move domains to wildcard.json if they have 2 or more subdomains
+   - Sort and deduplicate all entries
+   - Run the tests to ensure everything is working correctly
 
-You can also run `npm run prod` to add new domains and run the tests at the same time.
-
-# License
+## License
 
 ```
 WWWWWW||WWWWWW
