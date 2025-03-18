@@ -3,6 +3,7 @@ const _ = require('lodash');
 const validator = require('validator');
 const { execSync } = require('child_process');
 const { tlds } = require('top-level-domains');
+const path = require('path');
 
 /**
  * Domain Manager - A comprehensive tool for managing disposable email domains
@@ -14,12 +15,15 @@ const { tlds } = require('top-level-domains');
  * 4. Sort, deduplicate, and format domains
  */
 
-// Configuration
+// Get the root directory
+const rootDir = path.join(__dirname, '..');
+
+// Configuration with updated paths
 const CONFIG = {
-    indexFile: 'index.json',
-    wildcardFile: 'wildcard.json',
-    contributionsDir: './contributions',
-    contributionsIndexFile: './contributions/index.txt'
+    indexFile: path.join(rootDir, 'index.json'),
+    wildcardFile: path.join(rootDir, 'wildcard.json'),
+    contributionsDir: path.join(rootDir, 'contributions'),
+    contributionsIndexFile: path.join(rootDir, 'contributions', 'index.txt')
 };
 
 /**
@@ -364,7 +368,8 @@ function runTests() {
 
         // Run the tests
         try {
-            const testOutput = execSync('npx mocha test/index.js test/wildcard.js', { encoding: 'utf8' });
+            const testCommand = `cd ${rootDir} && npx mocha test/index.js test/wildcard.js`;
+            const testOutput = execSync(testCommand, { encoding: 'utf8' });
             console.log(testOutput);
             return true;
         } catch (error) {

@@ -1,7 +1,7 @@
 # Disposable Email Domains
 
 
-A list of [disposable email domains](http://en.wikipedia.org/wiki/Disposable_email_address) like `mailinator.com`. You can use it to detect or block disposable accounts in your signup process. Exact domain matches are found in [index.json](https://github.com/tompec/disposable-email-domains/blob/master/index.json) and wildcard domains (ex: `*.33mail.com`) are in [wildcard.json](https://github.com/tompec/disposable-email-domains/blob/master/wildcard.json).
+A list of [disposable email domains](http://en.wikipedia.org/wiki/Disposable_email_address) like `mailinator.com`. You can use it to detect or block disposable accounts in your signup process. Exact domain matches are found in [index.json](https://github.com/tompec/disposable-email-domains/blob/main/index.json) and wildcard domains (ex: `*.33mail.com`) are in [wildcard.json](https://github.com/tompec/disposable-email-domains/blob/main/wildcard.json).
 
 ## Examples
 
@@ -26,9 +26,9 @@ $ npm install disposable-domains
    npm install
    ```
 
-2. Add your disposable domains to [contributions/index.txt](https://github.com/tompec/disposable-email-domains/blob/master/contributions/index.txt) (one domain per line, without any additional formatting)
+2. Add your disposable domains to [contributions/index.txt](https://github.com/tompec/disposable-email-domains/blob/main/contributions/index.txt) (one domain per line, without any additional formatting)
 
-3. Run the [integration script](https://github.com/tompec/disposable-email-domains/blob/master/domain-manager.js):
+3. Run the [domain manager script](https://github.com/tompec/disposable-email-domains/blob/main/scripts/domain-manager.js):
    ```
    npm run process
    ```
