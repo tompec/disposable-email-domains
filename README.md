@@ -7,8 +7,8 @@ A list of [disposable email domains](http://en.wikipedia.org/wiki/Disposable_ema
 
 ### Node.JS
 ```js
-var domains = require('disposable-email-domains');
-var wildcards = require('disposable-email-domains/wildcard.json');
+var domains = require('disposable-domains');
+var wildcards = require('disposable-domains/wildcard.json');
 
 // ... your code here
 ```
