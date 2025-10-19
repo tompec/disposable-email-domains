@@ -1,6 +1,6 @@
 {
   "name": "disposable-domains",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "A list of disposable email domains",
   "repository": {
     "type": "git",
