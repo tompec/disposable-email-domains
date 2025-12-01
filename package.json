@@ -11,7 +11,7 @@
   "scripts": {
     "test": "mocha test/index.js test/wildcard.js",
     "process": "node scripts/domain-manager.js",
-    "release": "node scripts/release.js"
+    "prepare-release": "npm run process && npm test"
   },
   "dependencies": {
     "lodash": "^4.17.21",
