@@ -10,7 +10,7 @@ const path = require('path');
  *
  * This script combines functionality to:
  * 1. Add new domains from contributions
- * 2. Process domains (group by root domains, optimize wildcards)
+ * 2. Process domains (group by root domains)
  * 3. Test domains for validity
  * 4. Sort, deduplicate, and format domains
  */
@@ -21,7 +21,6 @@ const rootDir = path.join(__dirname, '..');
 // Configuration with updated paths
 const CONFIG = {
     indexFile: path.join(rootDir, 'index.json'),
-    wildcardFile: path.join(rootDir, 'wildcard.json'),
     contributionsDir: path.join(rootDir, 'contributions'),
     contributionsIndexFile: path.join(rootDir, 'contributions', 'index.txt')
 };
@@ -33,7 +32,6 @@ function loadDomains() {
     console.log('Loading domains...');
 
     let index = [];
-    let wildcard = [];
 
     try {
         if (fs.existsSync(CONFIG.indexFile)) {
@@ -42,25 +40,18 @@ function loadDomains() {
         } else {
             console.log(`${CONFIG.indexFile} not found, starting with empty index`);
         }
-
-        if (fs.existsSync(CONFIG.wildcardFile)) {
-            wildcard = JSON.parse(fs.readFileSync(CONFIG.wildcardFile, 'utf8'));
-            console.log(`Loaded ${wildcard.length} domains from ${CONFIG.wildcardFile}`);
-        } else {
-            console.log(`${CONFIG.wildcardFile} not found, starting with empty wildcard list`);
-        }
     } catch (error) {
         console.error(`Error loading domains: ${error.message}`);
         process.exit(1);
     }
 
-    return { index, wildcard };
+    return { index };
 }
 
 /**
  * Add new domains from contributions
  */
-function addContributions(index, wildcard) {
+function addContributions(index) {
     console.log('Adding contributions...');
 
     try {
@@ -69,7 +60,7 @@ function addContributions(index, wildcard) {
             fs.mkdirSync(CONFIG.contributionsDir, { recursive: true });
             fs.writeFileSync(CONFIG.contributionsIndexFile, '');
             console.log('Created contributions directory and empty index.txt file');
-            return { index, wildcard };
+            return index;
         }
 
         // Add new domains from contributions
@@ -87,39 +78,35 @@ function addContributions(index, wildcard) {
         console.error(`Error adding contributions: ${error.message}`);
     }
 
-    return { index, wildcard };
+    return index;
 }
 
 /**
  * Clean and normalize domains
  */
-function cleanDomains(index, wildcard) {
+function cleanDomains(index) {
     console.log('Cleaning domains...');
 
     // Remove empty strings
     index = index.filter(d => d);
-    wildcard = wildcard.filter(d => d);
 
     // Lowercase
     index = index.map(domain => _.toLower(domain));
-    wildcard = wildcard.map(domain => _.toLower(domain));
 
     // Sort - using simple lexicographical sorting for compatibility with chai-sorted
     index.sort();
-    wildcard.sort();
 
     // Dedupe
     index = _.uniq(index);
-    wildcard = _.uniq(wildcard);
 
-    return { index, wildcard };
+    return index;
 }
 
 /**
- * Process domains to optimize wildcards
+ * Process domains to optimize root coverage
  */
-function processDomains(index, wildcard) {
-    console.log('Processing domains...');
+function processDomains(index) {
+    console.log('Processing domains and collapsing roots when many subdomains are present...');
 
     // Get TLD list from the installed package
     console.log('Using TLD list from top-level-domains package');
@@ -194,45 +181,38 @@ function processDomains(index, wildcard) {
     console.log(`Grouped domains into ${Object.keys(domainGroups).length} root domains`);
     console.log(`Found ${unprocessableDomains.length} unprocessable domains`);
 
-    // Count domains with multiple subdomains
-    let multiSubdomainCount = 0;
-    let rootDomainsWithMultipleSubdomains = 0;
-    Object.entries(domainGroups).forEach(([rootDomain, domains]) => {
-        // Filter out the root domain itself from the group
-        const subdomains = domains.filter(domain => domain !== rootDomain);
-        if (subdomains.length > 1) {
-            // More than one true subdomain
-            multiSubdomainCount++;
-            rootDomainsWithMultipleSubdomains++;
-        }
-    });
-    console.log(`Found ${multiSubdomainCount} root domains with multiple subdomains`);
-    console.log(`Found ${rootDomainsWithMultipleSubdomains} root domains with two or more true subdomains`);
-
     // Prepare new lists
     const newIndexDomains = [];
-    const newWildcardDomains = [...wildcard];
-    const movedToWildcard = [];
+    let collapsedToRootCount = 0;
+    let rootsCollapsed = 0;
+    const collapseThreshold = 3; // collapse to root when 3+ subdomains share the root
 
     // Process each group
     Object.entries(domainGroups).forEach(([rootDomain, domains]) => {
         // Filter out the root domain itself from the group to get only true subdomains
         const subdomains = domains.filter(domain => domain !== rootDomain);
 
-        if (subdomains.length < 2) {
-            // Less than two true subdomains with this root, keep them all in index.json
-            newIndexDomains.push(...domains);
-        } else {
-            // Two or more true subdomains with this root
-            // Always add the root domain to index.json, regardless of whether it was in the original list
-            newIndexDomains.push(rootDomain);
+        const hasExplicitRoot = domains.includes(rootDomain);
+        const shouldCollapse = subdomains.length >= collapseThreshold;
 
-            // Add the root domain to wildcard.json if not already there
-            if (!newWildcardDomains.includes(rootDomain)) {
-                newWildcardDomains.push(rootDomain);
-                movedToWildcard.push(rootDomain);
-            }
+        if (hasExplicitRoot && subdomains.length > 0) {
+            // Root explicitly listed: keep root, drop subdomains
+            rootsCollapsed++;
+            newIndexDomains.push(rootDomain);
+            collapsedToRootCount += subdomains.length;
+            return;
         }
+
+        if (!hasExplicitRoot && shouldCollapse) {
+            // Collapse when 3+ subdomains share a root
+            rootsCollapsed++;
+            newIndexDomains.push(rootDomain);
+            collapsedToRootCount += subdomains.length;
+            return;
+        }
+
+        // Otherwise keep whatever was listed (root-only or few subdomains)
+        newIndexDomains.push(...domains);
     });
 
     // Add unprocessable domains back to index
@@ -240,55 +220,23 @@ function processDomains(index, wildcard) {
 
     console.log(`Processed ${index.length} domains.`);
     console.log(`New index has ${newIndexDomains.length} domains (${index.length - newIndexDomains.length} fewer).`);
-    console.log(`New wildcard has ${newWildcardDomains.length} domains (${newWildcardDomains.length - wildcard.length} more).`);
-    console.log(`Moved ${movedToWildcard.length} domains to wildcard.`);
+    console.log(`Collapsed ${collapsedToRootCount} subdomains into root coverage across ${rootsCollapsed} roots (threshold ${collapseThreshold} subdomains).`);
 
     // Make sure to sort the final lists again
     newIndexDomains.sort();
-    newWildcardDomains.sort();
 
     return {
-        index: newIndexDomains,
-        wildcard: newWildcardDomains
-    };
-}
-
-/**
- * Remove domains that are covered by wildcards
- */
-function removeWildcardCoveredDomains(index, wildcard) {
-    console.log('Removing domains covered by wildcards...');
-
-    const regexp = new RegExp(/(.+(?:\.[\w-]+\.[\w-]+)+)$/);
-
-    const filteredIndex = index.filter(domain => {
-        if (regexp.test(domain)) {
-            return !wildcard.some(wildcardDomain => {
-                return _.endsWith(domain, wildcardDomain);
-            });
-        }
-        return true;
-    });
-
-    console.log(`Removed ${index.length - filteredIndex.length} domains covered by wildcards`);
-
-    // Make sure to sort again after filtering
-    filteredIndex.sort();
-
-    return {
-        index: filteredIndex,
-        wildcard
+        index: newIndexDomains
     };
 }
 
 /**
  * Test domains for validity
  */
-function testDomains(index, wildcard) {
+function testDomains(index) {
     console.log('Testing domains...');
 
     const invalidIndex = [];
-    const invalidWildcard = [];
 
     // Test if domains are valid FQDNs
     index.forEach(domain => {
@@ -298,46 +246,31 @@ function testDomains(index, wildcard) {
         }
     });
 
-    wildcard.forEach(domain => {
-        if (!validator.isFQDN(domain)) {
-            invalidWildcard.push(domain);
-            console.warn(`Invalid domain in wildcard: ${domain}`);
-        }
-    });
-
-    // Remove invalid domains
     const validIndex = index.filter(domain => !invalidIndex.includes(domain));
-    const validWildcard = wildcard.filter(domain => !invalidWildcard.includes(domain));
 
     console.log(`Removed ${invalidIndex.length} invalid domains from index`);
-    console.log(`Removed ${invalidWildcard.length} invalid domains from wildcard`);
 
     // Final sort to ensure alphabetical order
     validIndex.sort();
-    validWildcard.sort();
 
     return {
-        index: validIndex,
-        wildcard: validWildcard
+        index: validIndex
     };
 }
 
 /**
  * Save domains to files
  */
-function saveDomains(index, wildcard) {
+function saveDomains(index) {
     console.log('Saving domains...');
 
     // Final sort before saving to ensure alphabetical order
     index.sort();
-    wildcard.sort();
 
     try {
         fs.writeFileSync(CONFIG.indexFile, JSON.stringify(index, null, 2));
-        fs.writeFileSync(CONFIG.wildcardFile, JSON.stringify(wildcard, null, 2));
 
         console.log(`Saved ${index.length} domains to ${CONFIG.indexFile}`);
-        console.log(`Saved ${wildcard.length} domains to ${CONFIG.wildcardFile}`);
 
         // Clear contribution files after successful save
         if (fs.existsSync(CONFIG.contributionsIndexFile)) {
@@ -368,7 +301,7 @@ function runTests() {
 
         // Run the tests
         try {
-            const testCommand = `cd ${rootDir} && npx mocha test/index.js test/wildcard.js`;
+            const testCommand = `cd ${rootDir} && npx mocha test/index.js`;
             const testOutput = execSync(testCommand, { encoding: 'utf8' });
             console.log(testOutput);
             return true;
@@ -390,25 +323,22 @@ function main() {
     console.log('=== Domain Manager ===');
 
     // Load domains
-    let { index, wildcard } = loadDomains();
+    let { index } = loadDomains();
 
     // Add contributions
-    ({ index, wildcard } = addContributions(index, wildcard));
+    index = addContributions(index);
 
     // Clean domains
-    ({ index, wildcard } = cleanDomains(index, wildcard));
+    index = cleanDomains(index);
 
-    // Process domains (optimize wildcards)
-    ({ index, wildcard } = processDomains(index, wildcard));
-
-    // Remove domains covered by wildcards
-    ({ index, wildcard } = removeWildcardCoveredDomains(index, wildcard));
+    // Process domains (collapse roots when many subdomains appear)
+    ({ index } = processDomains(index));
 
     // Test domains
-    ({ index, wildcard } = testDomains(index, wildcard));
+    ({ index } = testDomains(index));
 
     // Save domains
-    const saveSuccess = saveDomains(index, wildcard);
+    const saveSuccess = saveDomains(index);
 
     // Run tests
     if (saveSuccess) {
