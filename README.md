@@ -1,45 +1,63 @@
 # Disposable Email Domains
 
-
-A list of [disposable email domains](http://en.wikipedia.org/wiki/Disposable_email_address) like `mailinator.com`. You can use it to detect or block disposable accounts in your signup process. Exact domain matches are found in [index.json](https://github.com/tompec/disposable-email-domains/blob/main/index.json) and wildcard domains (ex: `*.33mail.com`) are in [wildcard.json](https://github.com/tompec/disposable-email-domains/blob/main/wildcard.json).
-
-## Examples
-
-### Node.JS
-```js
-var domains = require('disposable-domains');
-var wildcards = require('disposable-domains/wildcard.json');
-
-// ... your code here
-```
+A list of [disposable email domains](http://en.wikipedia.org/wiki/Disposable_email_address) (like `mailinator.com`) commonly used to create temporary accounts. Use this list to detect or block fake accounts during your signup process.
 
 ## Installation
-  
+
+```bash
+npm install disposable-domains
 ```
-$ npm install disposable-domains
+
+## Usage
+
+This package exports an array of domains. You can check if an email domain exists in the list:
+
+```js
+const disposableDomains = require('disposable-domains');
+const emailDomain = 'something.mailinator.com'; 
+
+// Check if the exact domain OR the root domain is in the list
+const isDisposable = disposableDomains.some(domain => 
+  emailDomain === domain || emailDomain.endsWith('.' + domain)
+);
+
+if (isDisposable) {
+  console.log('Blocked.');
+}
 ```
+
+### How the list works
+
+The entries in `index.json` should be treated as **domain suffixes**. 
+
+This means you should block the exact domain match **and** any subdomain to the left of it (a recursive wildcard match).
+
+- **Matches:** `mailinator.com`
+- **Also Matches:** `sub.mailinator.com`, `a.b.mailinator.com`
 
 ## Contributing
 
 1. Install dependencies:
-   ```
+
+   ```bash
    npm install
    ```
 
-2. Add your disposable domains to [contributions/index.txt](https://github.com/tompec/disposable-email-domains/blob/main/contributions/index.txt) (one domain per line, without any additional formatting)
+2. Add domains to [contributions/index.txt](https://github.com/tompec/disposable-email-domains/blob/main/contributions/index.txt):
+   - One domain per line
+   - No extra formatting
 
-3. Run the [domain manager script](https://github.com/tompec/disposable-email-domains/blob/main/scripts/domain-manager.js):
-   ```
+3. Build the list:
+
+   ```bash
    npm run process
    ```
-   That script will:
-   - Add your domains to index.json
-   - Validate domains using the FQDN (Fully Qualified Domain Name) standard
-   - Move domains to wildcard.json if they have 2 or more subdomains
-   - Sort and deduplicate all entries
-   - Run the tests to ensure everything is working correctly
+
+   This validates, sorts, and deduplicates your entries.
 
 ## License
+
+MIT — see [LICENSE](LICENSE) for details.
 
 ```
 WWWWWW||WWWWWW
@@ -53,11 +71,3 @@ WWWWWW||WWWWWW
         _||_|| _||_||
        (__|__|(__|__|
 ```
-
-THE SOFTWARE IS PROVIDED "AS IS" AND "AS AND WHEN AVAILABLE", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.

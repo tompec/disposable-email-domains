@@ -9,7 +9,7 @@
   "license": "MIT",
   "main": "./index.json",
   "scripts": {
-    "test": "mocha test/index.js test/wildcard.js",
+    "test": "mocha test/index.js",
     "process": "node scripts/domain-manager.js",
     "prepare-release": "npm run process && npm test"
   },
