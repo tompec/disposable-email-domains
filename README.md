@@ -1,6 +1,8 @@
 # Disposable Email Domains
 
-A list of [disposable email domains](http://en.wikipedia.org/wiki/Disposable_email_address) (like `mailinator.com`) commonly used to create temporary accounts. Use this list to detect or block fake accounts during your signup process.
+A list of over 130,000 [disposable email domains](http://en.wikipedia.org/wiki/Disposable_email_address) (like `mailinator.com`) commonly used to create temporary accounts. Use this list to detect or block fake accounts during your signup process.
+
+Maintained by [UserCheck](https://www.usercheck.com), a domain intelligence API. The domains here are drawn from the same dataset.
 
 ## Installation
 
