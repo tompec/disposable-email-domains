@@ -1,0 +1,526 @@
+[
+  {
+    "domain": "1981gmail.com",
+    "live_mx_records": [
+      "1 la4.inquirymailer.com.",
+      "10 ny4.inquirymailer.com."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      },
+      {
+        "repo": "FGRibreau/mailchecker",
+        "licence": "MIT",
+        "url": "https://github.com/FGRibreau/mailchecker/blob/master/list.txt"
+      }
+    ],
+    "corroborating_source_count": 2
+  },
+  {
+    "domain": "364gmail.com",
+    "live_mx_records": [
+      "0 aero4.stememail.com.",
+      "10 mail4.stememail.net."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      },
+      {
+        "repo": "FGRibreau/mailchecker",
+        "licence": "MIT",
+        "url": "https://github.com/FGRibreau/mailchecker/blob/master/list.txt"
+      }
+    ],
+    "corroborating_source_count": 2
+  },
+  {
+    "domain": "68gmail.com",
+    "live_mx_records": [
+      "10 mx37.mb5p.com.",
+      "20 mx37.m1bp.com."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      },
+      {
+        "repo": "FGRibreau/mailchecker",
+        "licence": "MIT",
+        "url": "https://github.com/FGRibreau/mailchecker/blob/master/list.txt"
+      }
+    ],
+    "corroborating_source_count": 2
+  },
+  {
+    "domain": "anisossemail.com",
+    "live_mx_records": [
+      "10 mail.anisossemail.com."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      }
+    ],
+    "corroborating_source_count": 1
+  },
+  {
+    "domain": "aziamail.com",
+    "live_mx_records": [
+      "0 mail.aziamail.com."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      },
+      {
+        "repo": "FGRibreau/mailchecker",
+        "licence": "MIT",
+        "url": "https://github.com/FGRibreau/mailchecker/blob/master/list.txt"
+      }
+    ],
+    "corroborating_source_count": 2
+  },
+  {
+    "domain": "blurmail.net",
+    "live_mx_records": [
+      "20 plato.junkemailfilter.com.",
+      "30 mx.junkemailfilter.net.",
+      "40 mx.junkemailfilter.org."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      },
+      {
+        "repo": "FGRibreau/mailchecker",
+        "licence": "MIT",
+        "url": "https://github.com/FGRibreau/mailchecker/blob/master/list.txt"
+      }
+    ],
+    "corroborating_source_count": 2
+  },
+  {
+    "domain": "dbkmail.de",
+    "live_mx_records": [
+      "10 mx.mailhost12.net."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      },
+      {
+        "repo": "FGRibreau/mailchecker",
+        "licence": "MIT",
+        "url": "https://github.com/FGRibreau/mailchecker/blob/master/list.txt"
+      }
+    ],
+    "corroborating_source_count": 2
+  },
+  {
+    "domain": "gmailus.top",
+    "live_mx_records": [
+      "51 route1.mx.cloudflare.net.",
+      "74 route3.mx.cloudflare.net.",
+      "86 route2.mx.cloudflare.net."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      },
+      {
+        "repo": "wesbos/burner-email-providers",
+        "licence": "MIT",
+        "url": "https://github.com/wesbos/burner-email-providers/blob/master/emails.txt"
+      }
+    ],
+    "corroborating_source_count": 2
+  },
+  {
+    "domain": "hottempmail.com",
+    "live_mx_records": [
+      "3 route3.mx.cloudflare.net.",
+      "54 route2.mx.cloudflare.net.",
+      "65 route1.mx.cloudflare.net."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      },
+      {
+        "repo": "wesbos/burner-email-providers",
+        "licence": "MIT",
+        "url": "https://github.com/wesbos/burner-email-providers/blob/master/emails.txt"
+      }
+    ],
+    "corroborating_source_count": 2
+  },
+  {
+    "domain": "husband78.dynainbox.com",
+    "live_mx_records": [
+      "5 mail.dynainbox.com."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      }
+    ],
+    "corroborating_source_count": 1
+  },
+  {
+    "domain": "individdumail.com",
+    "live_mx_records": [
+      "10 mx1.timeweb.ru.",
+      "20 mx2.timeweb.ru."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      }
+    ],
+    "corroborating_source_count": 1
+  },
+  {
+    "domain": "mailcuatoi123.space",
+    "live_mx_records": [
+      "1 emailfake.com."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      }
+    ],
+    "corroborating_source_count": 1
+  },
+  {
+    "domain": "mailhubs.org",
+    "live_mx_records": [
+      "32 route3.mx.cloudflare.net.",
+      "82 route2.mx.cloudflare.net.",
+      "98 route1.mx.cloudflare.net."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      }
+    ],
+    "corroborating_source_count": 1
+  },
+  {
+    "domain": "mailniu.com",
+    "live_mx_records": [
+      "0 mailniu.com."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      },
+      {
+        "repo": "FGRibreau/mailchecker",
+        "licence": "MIT",
+        "url": "https://github.com/FGRibreau/mailchecker/blob/master/list.txt"
+      }
+    ],
+    "corroborating_source_count": 2
+  },
+  {
+    "domain": "mailrerrs.com",
+    "live_mx_records": [
+      "10 mx6.mailrerrs.com.",
+      "20 mx.mailrerrs.com."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      },
+      {
+        "repo": "FGRibreau/mailchecker",
+        "licence": "MIT",
+        "url": "https://github.com/FGRibreau/mailchecker/blob/master/list.txt"
+      }
+    ],
+    "corroborating_source_count": 2
+  },
+  {
+    "domain": "msn-mail-free-7760.dynv6.net",
+    "live_mx_records": [
+      "10 email.chatgpt.org.uk."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      },
+      {
+        "repo": "disposable-email-domains/disposable-email-domains",
+        "licence": "CC0-1.0",
+        "url": "https://github.com/disposable-email-domains/disposable-email-domains/blob/main/disposable_email_blocklist.conf"
+      }
+    ],
+    "corroborating_source_count": 2
+  },
+  {
+    "domain": "nomail.net",
+    "live_mx_records": [
+      "10 in1-smtp.messagingengine.com.",
+      "20 in2-smtp.messagingengine.com."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      },
+      {
+        "repo": "FGRibreau/mailchecker",
+        "licence": "MIT",
+        "url": "https://github.com/FGRibreau/mailchecker/blob/master/list.txt"
+      },
+      {
+        "repo": "wesbos/burner-email-providers",
+        "licence": "MIT",
+        "url": "https://github.com/wesbos/burner-email-providers/blob/master/emails.txt"
+      }
+    ],
+    "corroborating_source_count": 3
+  },
+  {
+    "domain": "out-mail.net",
+    "live_mx_records": [
+      "10 mail.out-mail.net."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      },
+      {
+        "repo": "FGRibreau/mailchecker",
+        "licence": "MIT",
+        "url": "https://github.com/FGRibreau/mailchecker/blob/master/list.txt"
+      },
+      {
+        "repo": "wesbos/burner-email-providers",
+        "licence": "MIT",
+        "url": "https://github.com/wesbos/burner-email-providers/blob/master/emails.txt"
+      }
+    ],
+    "corroborating_source_count": 3
+  },
+  {
+    "domain": "priyo.email",
+    "live_mx_records": [
+      "10 mail.priyo.email."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      }
+    ],
+    "corroborating_source_count": 1
+  },
+  {
+    "domain": "prettymailhost.com",
+    "live_mx_records": [
+      "0 mail.prettymailhost.com."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      }
+    ],
+    "corroborating_source_count": 1
+  },
+  {
+    "domain": "techemail.com",
+    "live_mx_records": [
+      "10 mx1.titan.email.",
+      "20 mx2.titan.email."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      },
+      {
+        "repo": "FGRibreau/mailchecker",
+        "licence": "MIT",
+        "url": "https://github.com/FGRibreau/mailchecker/blob/master/list.txt"
+      },
+      {
+        "repo": "wesbos/burner-email-providers",
+        "licence": "MIT",
+        "url": "https://github.com/wesbos/burner-email-providers/blob/master/emails.txt"
+      },
+      {
+        "repo": "disposable-email-domains/disposable-email-domains",
+        "licence": "CC0-1.0",
+        "url": "https://github.com/disposable-email-domains/disposable-email-domains/blob/main/disposable_email_blocklist.conf"
+      }
+    ],
+    "corroborating_source_count": 4
+  },
+  {
+    "domain": "tmailku.web.id",
+    "live_mx_records": [
+      "21 route1.mx.cloudflare.net.",
+      "33 route2.mx.cloudflare.net.",
+      "62 route3.mx.cloudflare.net."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      }
+    ],
+    "corroborating_source_count": 1
+  },
+  {
+    "domain": "tokenmail.de",
+    "live_mx_records": [
+      "10 186.o74.org."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      },
+      {
+        "repo": "FGRibreau/mailchecker",
+        "licence": "MIT",
+        "url": "https://github.com/FGRibreau/mailchecker/blob/master/list.txt"
+      },
+      {
+        "repo": "wesbos/burner-email-providers",
+        "licence": "MIT",
+        "url": "https://github.com/wesbos/burner-email-providers/blob/master/emails.txt"
+      },
+      {
+        "repo": "disposable-email-domains/disposable-email-domains",
+        "licence": "CC0-1.0",
+        "url": "https://github.com/disposable-email-domains/disposable-email-domains/blob/main/disposable_email_blocklist.conf"
+      }
+    ],
+    "corroborating_source_count": 4
+  },
+  {
+    "domain": "unadaptmail.com",
+    "live_mx_records": [
+      "10 mx1.timeweb.ru.",
+      "20 mx2.timeweb.ru."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      }
+    ],
+    "corroborating_source_count": 1
+  },
+  {
+    "domain": "verifymail.iodomain883.wishy.fr",
+    "live_mx_records": [
+      "wishy.fr.",
+      "1 smtp.yopmail.com."
+    ],
+    "dns_checked_at_utc": "2026-10-09T07:40:00Z",
+    "dns_method": "dig +short MX <domain>, direct to resolver, no cache",
+    "cited_in_upstream_sources": [
+      {
+        "repo": "disposable/disposable-email-domains",
+        "licence": "MIT",
+        "url": "https://github.com/disposable/disposable-email-domains/blob/master/domains.txt"
+      }
+    ],
+    "corroborating_source_count": 1
+  }
+]
