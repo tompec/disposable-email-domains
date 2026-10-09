@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const domains = require('../index');
 const chai = require('chai');
+const { tlds } = require('top-level-domains');
 const expect = chai.expect;
 
 chai.use(require("chai-sorted"));
@@ -25,5 +26,9 @@ describe('Domains', function(){
   });
   it('should be a valid domain', function(){
     expect(domains).to.be.all.isFQDN;
+  });
+  it('should not list a bare public suffix', function(){
+    const suffixes = new Set(tlds.map(item => item.tld));
+    expect(domains.filter(domain => suffixes.has(domain))).to.be.empty;
   });
 });
